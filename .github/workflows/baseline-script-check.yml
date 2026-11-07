@@ -1,0 +1,16 @@
+name: Windshield baseline tooling
+on:
+  push:
+    branches: ['exp/windshield-silhouette-baseline']
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m py_compile experiments/windshield/import_archive.py experiments/windshield/verify_reproduction.py
+      - run: python experiments/windshield/import_archive.py --help
+      - name: Provenance notice
+        run: echo "Reconstruction requires the checksum-pinned user archive; CI does not invent the missing inputs."
