@@ -1,0 +1,17 @@
+name: Research docs sanity
+on:
+  push:
+    branches: [main, 'exp/**']
+  pull_request:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Confirm schema is parseable
+        run: python -m json.tool schemas/experiment.schema.json > /dev/null
+      - name: Check required documents
+        run: python -c "from pathlib import Path; assert all(Path(p).exists() for p in ['README.md','docs/principles.md','docs/protocol.md','docs/windshield-poc.md','experiments/README.md'])"

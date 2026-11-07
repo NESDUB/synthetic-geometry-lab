@@ -1,0 +1,8 @@
+# Generated reconstructions, experiment outputs and local environments
+__pycache__/
+.pytest_cache/
+.venv/
+*.pyc
+runs/
+*.log
+.DS_Store
