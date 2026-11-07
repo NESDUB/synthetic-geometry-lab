@@ -28,6 +28,7 @@ original evidence
 ## Start here
 
 - [Research principles](docs/principles.md) — the working philosophy and non-negotiable verification rules.
+- [Prompt playbook](docs/prompt-playbook.md) — the staged windshield conversation and experimental image-generation templates.
 - [Experimental protocol](docs/protocol.md) — coordinate conventions, metrics, evidence and decision criteria.
 - [Visual representation atlas](docs/representation-atlas.md) — proposed machine-readable image encodings and tradeoffs.
 - [Windshield proof of concept](docs/windshield-poc.md) — what was actually attempted, produced and validated.
