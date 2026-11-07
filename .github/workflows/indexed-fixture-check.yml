@@ -1,0 +1,32 @@
+name: Indexed correspondence ground truth
+on:
+  push:
+    branches: ['exp/indexed-correspondence']
+jobs:
+  fixture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Create known-geometry orthographic reference
+        run: python experiments/indexed/generate_fixture.py
+      - name: Verify exact projections and baseline evaluator
+        run: |
+          python - <<'PY'
+          import csv, subprocess, json
+          from pathlib import Path
+          rows=list(csv.DictReader(Path('runs/indexed-fixture/truth.csv').open()))
+          with Path('runs/indexed-fixture/predictions.csv').open('w',newline='') as f:
+              w=csv.writer(f); w.writerow(['point_id','view','u_px','v_px'])
+              for row in rows:
+                  for view in ('side','top','front'):
+                      w.writerow([row['point_id'],view,row[f'{view}_u'],row[f'{view}_v']])
+          p=subprocess.run(['python','experiments/indexed/evaluate.py','runs/indexed-fixture/truth.csv','runs/indexed-fixture/predictions.csv'],text=True,capture_output=True,check=True)
+          m=json.loads(p.stdout)
+          assert m['coverage']==1.0 and m['coordinate_rmse_px']<1e-10
+          assert m['invalid_predictions']==0 and m['duplicate_predictions']==0
+          assert m['cross_view_disagreement_rmse_units']<1e-10
+          print(m)
+          PY
