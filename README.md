@@ -31,6 +31,8 @@ original evidence
 - [Prompt playbook](docs/prompt-playbook.md) — the staged windshield conversation and experimental image-generation templates.
 - [Experimental protocol](docs/protocol.md) — coordinate conventions, metrics, evidence and decision criteria.
 - [Visual representation atlas](docs/representation-atlas.md) — proposed machine-readable image encodings and tradeoffs.
+- [Vehicle visual-hull case study](docs/case-studies/nov-2026-vehicle-visual-hull.md) — reproducible three-view tracing, landmark alignment, voxel intersection, and OBJ/GLB generation.
+- [Visual-hull experiment and code](experiments/orthographic-visual-hull/README.md) — two-stage Python reproduction and regression checks.
 - [Windshield proof of concept](docs/windshield-poc.md) — what was actually attempted, produced and validated.
 - [Experiment registry](experiments/README.md) — independent competing investigations, not a ranked leaderboard.
 - [Agent handoff](docs/agent-handoff.md) — operating instructions for AI coding/modeling agents.
