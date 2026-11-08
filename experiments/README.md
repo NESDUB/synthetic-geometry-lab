@@ -8,4 +8,6 @@ Each experiment is a **competing hypothesis**, not a ranking. Keep methods on se
 | `exp/indexed-correspondence` | Explicitly numbered multi-view intersections improve 3D constraint quality | Proposed | Ground-truth landmark accuracy and detection reliability |
 | `exp/geometry-atlas` | Multiple specialized image encodings outperform a silhouette baseline | Proposed | Depth/normal integrability, distortion and geometry error |
 
+| `exp/orthographic-visual-hull` | Registered top/side/front AI drawings can constrain a 3D visual-hull *blockout* | Reproduced original Nov 2026 OBJ byte-for-byte; shape accuracy unverified | Compare to independently measured surfaces; ablate one view and alignment warps |
+
 Always report whether a claim is from a run, from an original attachment, or only a proposed test.
